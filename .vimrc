@@ -28,7 +28,9 @@ Plugin 'VundleVim/Vundle.vim'
 " A better statusline
 Plugin 'bling/vim-airline'
 " Awesome Code Completion
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
+" vim-hybrid colorschme
+Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()
 filetype plugin indent on " for plugins
@@ -50,9 +52,14 @@ set laststatus=2
 "Color Scheme"
 set t_Co=256
 set background=dark
-colorscheme seoul256
+colorscheme hybrid
+
+" SEOUL 256 OPTIONS
+" colorscheme seoul256
 " For seoul256, 233 is darkest and 239 is lightest
-let g:seoul256_background = 234
+" let g:seoul256_background = 234
+
+
 syntax on        " Turn on color highlighting
 au BufReadPost *.ng set filetype=html " Syntax highlighting to html for angular templates
 
