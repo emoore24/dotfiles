@@ -31,6 +31,22 @@ Plugin 'bling/vim-airline'
 " Plugin 'Valloric/YouCompleteMe'
 " vim-hybrid colorschme
 Plugin 'w0ng/vim-hybrid'
+" nerdtree
+Plugin 'scrooloose/nerdtree'
+" Commenting Plugin
+Plugin 'tpope/vim-commentary'
+" Papercolor Theme
+Plugin 'NLKNguyen/papercolor-theme'
+" Emmet
+Plugin 'mattn/emmet-vim'
+" Show git diffs in gutter
+Plugin 'airblade/vim-gitgutter'
+" Git Plugin
+Plugin 'tpope/vim-fugitive'
+" Code snippet engine
+Plugin 'SirVer/ultisnips'
+" Actual code snippets
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 filetype plugin indent on " for plugins
@@ -44,6 +60,22 @@ filetype plugin indent on " for plugins
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
+" Nerdtree
+" Open with ctrl-\
+map <C-\> :NERDTreeToggle<CR>
+
+" Emmet
+" Enable emmet just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+" Leader for Emmet
+let g:user_emmet_leader_key='<C-Y>'
+
+" Utilsnips
+" Different triggers
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 "=================="
 "DISPLAY Options"
@@ -52,13 +84,16 @@ set laststatus=2
 "Color Scheme"
 set t_Co=256
 set background=dark
-let g:hybrid_custom_term_colors = 1
-colorscheme hybrid
+colorscheme PaperColor
+" VIM HYBRID
+" let g:hybrid_custom_term_colors = 1
+" colorscheme hybrid
 
 " SEOUL 256 OPTIONS
 " colorscheme seoul256
 " For seoul256, 233 is darkest and 239 is lightest
 " let g:seoul256_background = 234
+
 
 
 syntax on        " Turn on color highlighting
@@ -75,6 +110,9 @@ set ruler
 set cursorline     " Show which line the cursor is on
 highlight CursorLine ctermbg=16
 set colorcolumn=81      " Show a big column at 81 characters so I remember to wrap lines.
+au BufReadPost *.ng set colorcolumn=101 " templates get column at 101 characters
+au BufReadPost *.java set colorcolumn=101 " java files get column at 101 characters
+au BufReadPost *.js set colorcolumn=81 " javascript files get column at 81 characters
 highlight ColorColumn ctermbg=black
 
 "Searching
@@ -130,3 +168,6 @@ map W w
 map Q q
 
 set clipboard+=unnamed  " Yanks go on clipboard instead.
+
+set backspace=indent,eol,start
+
