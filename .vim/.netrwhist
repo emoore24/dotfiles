@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/usr/local/google/home/mooree/src/git_pantheon/google3/javatests/com/google/developers/console/protractor/datastore'
-let g:netrw_dirhist_2='/usr/local/google/home/mooree/src/git_pantheon/google3/java/com/google/developers/console/web/datastore'
