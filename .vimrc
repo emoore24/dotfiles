@@ -92,7 +92,7 @@ map <C-b> :CtrlPBuffer<CR>
 "Color Scheme"
 set t_Co=256
 set background=dark
-colorscheme PaperColor
+silent! colorscheme PaperColor
 " VIM HYBRID
 " let g:hybrid_custom_term_colors = 1
 " colorscheme hybrid
