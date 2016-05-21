@@ -47,6 +47,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'SirVer/ultisnips'
 " Actual code snippets
 Plugin 'honza/vim-snippets'
+" CtrlP is a fuzzy finder
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on " for plugins
@@ -76,6 +78,12 @@ let g:user_emmet_leader_key='<C-Y>'
 let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+
+" CtrlP
+" Set working path to cwd
+let g:ctrlp_working_path_mode = 'ra'
+" Buffer switching with C-b
+map <C-b> :CtrlPBuffer<CR>
 
 "=================="
 "DISPLAY Options"
