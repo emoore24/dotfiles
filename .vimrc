@@ -49,6 +49,10 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " CtrlP is a fuzzy finder
 Plugin 'ctrlpvim/ctrlp.vim'
+" Auto set paste
+Plugin 'ConradIrwin/vim-bracketed-paste'
+" Better javascript syntax support
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on " for plugins
