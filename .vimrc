@@ -86,6 +86,10 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 " CtrlP
 " Set working path to cwd
 let g:ctrlp_working_path_mode = 'ra'
+" exclude node_modules, .git, .sass-cache
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|node_modules|\.sass-cache)$',
+  \ }
 " Buffer switching with C-b
 map <C-b> :CtrlPBuffer<CR>
 
