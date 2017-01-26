@@ -27,16 +27,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " A better statusline
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Awesome Code Completion
 " Plugin 'Valloric/YouCompleteMe'
-" vim-hybrid colorschme
-Plugin 'w0ng/vim-hybrid'
 " nerdtree
 Plugin 'scrooloose/nerdtree'
 " Commenting Plugin
 Plugin 'tpope/vim-commentary'
-" Papercolor Theme
-Plugin 'NLKNguyen/papercolor-theme'
 " Emmet
 Plugin 'mattn/emmet-vim'
 " Show git diffs in gutter
@@ -53,6 +50,18 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 " Better javascript syntax support
 Plugin 'pangloss/vim-javascript'
+" Syntax checking
+Plugin 'scrooloose/syntastic'
+" Color Schemes
+Plugin 'endel/vim-github-colorscheme'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'morhetz/gruvbox'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'ajh17/Spacegray.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'bcicen/vim-vice'
+Plugin 'dracula/vim'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on " for plugins
@@ -82,6 +91,11 @@ let g:user_emmet_leader_key='<C-Y>'
 let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+" Define snippets folder
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/UltiSnips"
+let g:UltiSnipsSnippetsDirectories = ["UltiSnips"]
+" Automatically load jasmine snippets with javascript
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-jasmine
 
 " CtrlP
 " Set working path to cwd
@@ -92,6 +106,25 @@ let g:ctrlp_custom_ignore = {
   \ }
 " Buffer switching with C-b
 map <C-b> :CtrlPBuffer<CR>
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth = 48
+
+" Syntastic
+" always populate the location list with errors...
+let g:syntastic_always_populate_loc_list = 1
+" but don't auto open the location list
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" show all errors from all checkers at once
+let g:syntastic_aggregate_errors = 1
+" show which checker produced which error/warning
+let g:syntastic_id_checkers = 1
+" Uncomment these for checkers
+" let g:syntastic_javascript_checkers = ['glint']
+" let g:syntastic_java_checkers = ['glint']
+" ignore angular templates
+let g:syntastic_ignore_files = ['.*\.ng']
 
 "=================="
 "DISPLAY Options"
@@ -99,8 +132,6 @@ map <C-b> :CtrlPBuffer<CR>
 
 "Color Scheme"
 set t_Co=256
-set background=dark
-silent! colorscheme PaperColor
 " VIM HYBRID
 " let g:hybrid_custom_term_colors = 1
 " colorscheme hybrid
@@ -109,7 +140,12 @@ silent! colorscheme PaperColor
 " colorscheme seoul256
 " For seoul256, 233 is darkest and 239 is lightest
 " let g:seoul256_background = 234
-
+set background=dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+silent! colorscheme PaperColor
 
 
 syntax on        " Turn on color highlighting
