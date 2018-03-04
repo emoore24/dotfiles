@@ -7,14 +7,40 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 set background=dark
-" ColorScheme Rotation: Uncomment one below for colorscheme
-" silent! colorscheme dracula
-" silent! colorscheme base16-grayscale-dark
-" let g:airline_theme='base16_grayscale'
-" silent! colorscheme base16-gruvbox-dark-hard
-" silent! colorscheme base16-gruvbox-light-soft
-silent! colorscheme Base2Tone_LakeDark
-let g:airline_theme='Base2Tone_LakeDark'
+
+function! SetColorScheme(scheme, isBgDark, airlineTheme)
+  if a:isBgDark
+    set background=dark
+  else
+    set background=light
+  endif
+  silent! execute 'colorscheme '.a:scheme
+  if (a:airlineTheme != "")
+    let g:airline_theme=''.a:airlineTheme
+  endif
+endfun
+
+function! SetBase2ToneColors(scheme, isDark)
+  call SetColorScheme(a:scheme, a:isDark, a:scheme)
+endfun
+
+command! -nargs=* SetDracula call SetColorScheme('dracula', 1, 'dracula')
+command! -nargs=* SetGrayscaleDark call SetColorScheme('base16-grayscale-dark', 1, 'base16_grayscale')
+command! -nargs=* SetGruvboxDark call SetColorScheme('base16-gruvbox-dark-hard', 1, '')
+command! -nargs=* SetGruvboxLight call SetColorScheme('base16-gruvbox-light-soft', 0, '')
+
+function! ToggleColorScheme()
+  if (g:colors_name == "Base2Tone_LakeDark")
+    call SetBase2ToneColors("Base2Tone_LakeLight", 0)
+  else
+    call SetBase2ToneColors("Base2Tone_LakeDark", 1)
+  endif
+  AirlineRefresh
+endfun
+
+command! -nargs=* ToggleColors call ToggleColorScheme()
+
+call SetBase2ToneColors("Base2Tone_LakeDark", 1)
 
 
 syntax on        " Turn on color highlighting
