@@ -1,0 +1,86 @@
+" Plugin Specific Configuration
+
+" Vim Airline "
+" Enable smart line, that shows buffers when there is only one tab
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+
+" Nerdtree
+" Open with ctrl-\
+map <C-\> :NERDTreeToggle<CR>
+" Open current directory with ctrl-d
+map <C-d> :NERDTree %:h<CR>
+
+" Emmet
+" Enable emmet just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+" Leader for Emmet
+let g:user_emmet_leader_key='<C-Y>'
+
+" Utilsnips
+" Different triggers
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+" Define snippets folder
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/UltiSnips"
+let g:UltiSnipsSnippetsDirectories = ["UltiSnips"]
+" Automatically load jasmine snippets with javascript/typescript
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-jasmine
+autocmd FileType typescript UltiSnipsAddFiletypes javascript-jasmine
+
+" CtrlP
+
+" Uncomment below to stop clearing filenames cache to speed up ctrlp
+" (manually refresh with <F5>
+" let g:ctrlp_clear_cache_on_exit = 0
+
+" Wait 200 ms after typing to update window
+let g:ctrlp_lazy_update = 200
+" Set working path to cwd
+let g:ctrlp_working_path_mode = 'ra'
+" exclude node_modules, .git, .sass-cache
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|node_modules|\.sass-cache)$',
+  \ }
+" Buffer switching with C-b
+map <C-b> :CtrlPBuffer<CR>
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth = 48
+
+" Vim Javasript
+" jsdoc syntax highlighting
+let g:javascript_plugin_jsdoc = 1
+
+" Vim-codefmt
+" Autoformat settings
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+augroup END<Paste>
+
+" Deoplete (Neovim)
+let g:deoplete#enable_at_startup=1
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" LanguageClient (Neovim)
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {}
+" javascript/typescript language server
+if executable('javascript-typescript-stdio')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
+else
+  echo "javascript-typescript-stdio not installed!\n"
+endif
+"shortcuts
+nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <leader>gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>

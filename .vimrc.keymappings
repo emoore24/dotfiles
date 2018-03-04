@@ -1,0 +1,36 @@
+" Vim Keymappings
+
+" This makes it easier to switch between vim panes if you have multiple open.
+" Control+L will move the cursor one pane Right, etc.
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" TABS
+" tab navigation like firefox
+nnoremap <S-tab> :tabprevious<CR>
+nnoremap <tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+" Scroll Offset (how many lines above/below cursor at all times)
+set scrolloff=10
+
+
+"======================"
+"Non-Display Options"
+"======================"
+
+"Quitting"
+" Because I hate when I hit q: and it enters Command mode, which I never use
+map q: :q<CR>
+" Because I hate when I type :Q or :W because I hold shift too long when trying to save or quit.
+map W w
+map Q q
+
+" set ctrl-c to copy/yank into clipboard register
+map <C-c> "+y<CR>"
+
+

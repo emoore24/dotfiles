@@ -1,0 +1,60 @@
+" Install Plugins
+
+" The following installs vim-plug if it is not installed.
+" Taken from https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/bundle') " use .vim/bundle as plugin directory
+
+" A better statusline
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Awesome Code Completion
+" Plug 'Valloric/YouCompleteMe'
+" nerdtree, load on demand when we invoke it
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+" Commenting Plug
+Plug 'tpope/vim-commentary'
+" Emmet, load for html or css
+Plug 'mattn/emmet-vim', {'for': ['html', 'css']}
+" Show git diffs in gutter
+Plug 'airblade/vim-gitgutter'
+" Code snippet engine
+Plug 'SirVer/ultisnips'
+" Actual code snippets
+Plug 'honza/vim-snippets'
+" CtrlP is a fuzzy finder
+Plug 'ctrlpvim/ctrlp.vim'
+" Auto set paste
+Plug 'ConradIrwin/vim-bracketed-paste'
+" Better javascript syntax highlighting support
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+" Asynchronous Syntax checking
+Plug 'w0rp/ale'
+" The following three plugins are used to enable Code Formatting
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+" typescript
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+" Color Schemes
+Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'atelierbram/Base2Tone-vim'
+
+" Neovim Specific Plugins
+if has('nvim')
+  " Language Server Protocol Client
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+  " Completion Engine
+  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+endif
+
+call plug#end()

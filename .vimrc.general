@@ -1,0 +1,52 @@
+" general vim settings
+
+let mapleader=',' " Map Leader is a special prefix for some commands
+
+set hidden " Show hidden buffers
+
+set history=50   " keep track of last commands
+
+" Uncomment to automatically change the working path to the path of the current file
+" autocmd BufNewFile,BufEnter * silent! lcd %:p:h
+
+"Searching
+set incsearch    " incremental searching on
+set hlsearch     " highlight all matches.
+
+"Spacing
+set expandtab      " Instead of a tab character, switch it to the equivalent number of spaces
+set autoindent
+set shiftwidth=2 " set shiftwidth to 2
+set softtabstop=2
+" use » to mark Tabs and ° to mark trailing whitespace. This is a
+" non-obtrusive way to mark these special characters.
+set list listchars=tab:»\ ,trail:°
+
+" Matching
+set incsearch           " incremental searching on
+set hlsearch            " highlight all matches
+set showmatch           " Show matching braces.
+
+" Line wrapping on by default
+set wrap
+set linebreak
+
+" WINDOWS
+set splitright " always split to the right
+set splitbelow "always split to the bottom
+
+set backspace=indent,eol,start
+
+" Neovim specific settings
+
+if has('nvim')
+  " TERMINAL settings
+  command! -nargs=* Term split | terminal <args>
+  command! -nargs=* VTerm vsplit | terminal <args>
+  " map ,ht to open terminal in horizontal split
+  nnoremap <leader>ht :Term<CR>
+  " map ,vt to open terminal in vertical split
+  nnoremap <leader>vt :VTerm<CR>
+  " Map escape to stop insert mode when in neovim terminal
+  tnoremap <Esc> <C-\><C-n>
+endif

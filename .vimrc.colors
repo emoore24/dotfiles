@@ -1,0 +1,39 @@
+" ColorScheme/Syntax highlighting configuration
+"Color Scheme"
+set t_Co=256
+set termguicolors " enable true colors support
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+set background=dark
+" ColorScheme Rotation: Uncomment one below for colorscheme
+" silent! colorscheme dracula
+" silent! colorscheme base16-grayscale-dark
+" let g:airline_theme='base16_grayscale'
+" silent! colorscheme base16-gruvbox-dark-hard
+" silent! colorscheme base16-gruvbox-light-soft
+silent! colorscheme Base2Tone_LakeDark
+let g:airline_theme='Base2Tone_LakeDark'
+
+
+syntax on        " Turn on color highlighting
+au BufReadPost *.ng set filetype=html " Syntax highlighting to html for angular templates
+
+
+"Line Numbers"
+set number " show line numbers
+set relativenumber " relative line numbers
+" highlight LineNr ctermbg=black ctermfg=white
+
+" Ruler, cursorline (horizontal), colorcolumn (vertical)
+set ruler
+set cursorline     " Show which line the cursor is on
+" highlight CursorLine ctermbg=16
+set colorcolumn=81      " Show a big column at 81 characters so I remember to wrap lines.
+au BufReadPost *.ng set colorcolumn=101 " templates get column at 101 characters
+au BufReadPost *.java set colorcolumn=101 " java files get column at 101 characters
+au BufReadPost *.js set colorcolumn=81 " javascript files get column at 81 characters
+au BufReadPost *.ts set colorcolumn=81 " typescript files get column at 81 characters
+" highlight ColorColumn ctermbg=16
+
