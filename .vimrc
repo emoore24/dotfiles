@@ -52,11 +52,14 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Better javascript syntax support
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 " Syntax checking
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
+" Asynchronous Syntax checking
+Plug 'w0rp/ale'
 " typescript
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 " Color Schemes
 Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 if has('nvim')
   " NEOVIM plugins go here
@@ -130,6 +133,8 @@ let g:javascript_plugin_jsdoc = 1
 
 " Deoplete (Neovim)
 let g:deoplete#enable_at_startup=1
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " LanguageClient (Neovim)
 " Automatically start language servers.
@@ -138,6 +143,7 @@ let g:LanguageClient_serverCommands = {}
 " javascript/typescript language server
 if executable('javascript-typescript-stdio')
   let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
 else
   echo "javascript-typescript-stdio not installed!\n"
 endif
@@ -173,21 +179,18 @@ let g:syntastic_ignore_files = ['.*\.ng', '.*\.ng\.html']
 
 "Color Scheme"
 set t_Co=256
-" VIM HYBRID
-" let g:hybrid_custom_term_colors = 1
-" colorscheme hybrid
-
-" SEOUL 256 OPTIONS
-" colorscheme seoul256
-" For seoul256, 233 is darkest and 239 is lightest
-" let g:seoul256_background = 234
 set background=dark
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-silent! colorscheme base16-pop
-let g:airline_theme='base16_pop'
+"silent! colorscheme dracula
+" silent! colorscheme base16-darktooth
+" silent! colorscheme base16-grayscale-dark
+" let g:airline_theme='base16_grayscale'
+silent! colorscheme base16-gruvbox-dark-hard
+" silent! colorscheme base16-gruvbox-light-soft
+" silent! colorscheme base16-mexico-light
 
 
 syntax on        " Turn on color highlighting
@@ -197,7 +200,7 @@ au BufReadPost *.ng set filetype=html " Syntax highlighting to html for angular 
 "Line Numbers"
 set number " show line numbers
 set relativenumber " relative line numbers
-highlight LineNr ctermbg=black ctermfg=white
+" highlight LineNr ctermbg=black ctermfg=white
 
 " Ruler, cursorline (horizontal), colorcolumn (vertical)
 set ruler
@@ -253,6 +256,15 @@ inoremap <C-t>     <Esc>:tabnew<CR>
 
 " Scroll Offset (how many lines above/below cursor at all times)
 set scrolloff=10
+
+if has('nvim')
+  " map ,ht to open terminal in horizontal split
+  nnoremap <leader>ht :hs | te
+  " map ,vt to open terminal in vertical split
+  nnoremap <leader>vt :vs | te
+  " Map escape to stop insert mode when in neovim terminal
+  tnoremap <Esc> <C-\><C-n>
+endif
 
 "======================"
 "Non-Display Options"
