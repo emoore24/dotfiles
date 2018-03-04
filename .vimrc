@@ -184,13 +184,11 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-"silent! colorscheme dracula
-" silent! colorscheme base16-darktooth
+" silent! colorscheme dracula
 " silent! colorscheme base16-grayscale-dark
 " let g:airline_theme='base16_grayscale'
 silent! colorscheme base16-gruvbox-dark-hard
 " silent! colorscheme base16-gruvbox-light-soft
-" silent! colorscheme base16-mexico-light
 
 
 syntax on        " Turn on color highlighting
