@@ -24,23 +24,80 @@ function! SetBase2ToneColors(scheme, isDark)
   call SetColorScheme(a:scheme, a:isDark, a:scheme)
 endfun
 
-command! -nargs=* SetDracula call SetColorScheme('dracula', 1, 'dracula')
-command! -nargs=* SetGrayscaleDark call SetColorScheme('base16-grayscale-dark', 1, 'base16_grayscale')
-command! -nargs=* SetGruvboxDark call SetColorScheme('base16-gruvbox-dark-hard', 1, '')
-command! -nargs=* SetGruvboxLight call SetColorScheme('base16-gruvbox-light-soft', 0, '')
-
-function! ToggleColorScheme()
-  if (g:colors_name == "Base2Tone_LakeDark")
-    call SetBase2ToneColors("Base2Tone_LakeLight", 0)
-  else
-    call SetBase2ToneColors("Base2Tone_LakeDark", 1)
-  endif
-  AirlineRefresh
+function! SetAyu(ayuColor)
+  let g:ayucolor=a:ayuColor
+  call SetColorScheme('ayu', 1, 'ayu')
 endfun
 
-command! -nargs=* ToggleColors call ToggleColorScheme()
+" command! -nargs=* SetDracula call SetColorScheme('dracula', 1, 'dracula')
 
-call SetBase2ToneColors("Base2Tone_LakeDark", 1)
+" Gruvbox contrast settings
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_contrast_light="medium"
+
+call SetAyu("mirage")
+
+" COLORSCHME MENU
+" This is based on the 'quickmenu' plugin.
+" enable cursorline (L)
+let g:quickmenu_options = "L"
+" clear all the items
+call g:quickmenu#reset()
+
+call g:quickmenu#append('Ayu Dark', "call SetAyu('dark')")
+call g:quickmenu#append('Ayu Light', "call SetAyu('light')")
+call g:quickmenu#append('Ayu Mirage', "call SetAyu('mirage')")
+
+call g:quickmenu#append('Base2Tone Cave Dark', "call SetBase2ToneColors('Base2Tone_CaveDark', 1)")
+call g:quickmenu#append('Base2Tone Cave Light', "call SetBase2ToneColors('Base2Tone_CaveDark', 0)")
+call g:quickmenu#append('Base2Tone Desert Dark', "call SetBase2ToneColors('Base2Tone_DesertDark', 1)")
+call g:quickmenu#append('Base2Tone Desert Light', "call SetBase2ToneColors('Base2Tone_DesertDark', 0)")
+call g:quickmenu#append('Base2Tone Drawbridge Dark', "call SetBase2ToneColors('Base2Tone_DrawbridgeDark', 1)")
+call g:quickmenu#append('Base2Tone Drawbridge Light', "call SetBase2ToneColors('Base2Tone_DrawbridgeDark', 0)")
+call g:quickmenu#append('Base2Tone Earth Dark', "call SetBase2ToneColors('Base2Tone_EarthDark', 1)")
+call g:quickmenu#append('Base2Tone Earth Light', "call SetBase2ToneColors('Base2Tone_EarthDark', 0)")
+call g:quickmenu#append('Base2Tone Evening Dark', "call SetBase2ToneColors('Base2Tone_EveningDark', 1)")
+call g:quickmenu#append('Base2Tone Evening Light', "call SetBase2ToneColors('Base2Tone_EveningDark', 0)")
+call g:quickmenu#append('Base2Tone Forest Dark', "call SetBase2ToneColors('Base2Tone_ForestDark', 1)")
+call g:quickmenu#append('Base2Tone Forest Light', "call SetBase2ToneColors('Base2Tone_ForestDark', 0)")
+call g:quickmenu#append('Base2Tone Heath Dark', "call SetBase2ToneColors('Base2Tone_HeathDark', 1)")
+call g:quickmenu#append('Base2Tone Heath Light', "call SetBase2ToneColors('Base2Tone_HeathDark', 0)")
+call g:quickmenu#append('Base2Tone Lake Dark', "call SetBase2ToneColors('Base2Tone_LakeDark', 1)")
+call g:quickmenu#append('Base2Tone Lake Light', "call SetBase2ToneColors('Base2Tone_LakeDark', 0)")
+call g:quickmenu#append('Base2Tone Meadow Dark', "call SetBase2ToneColors('Base2Tone_MeadowDark', 1)")
+call g:quickmenu#append('Base2Tone Meadow Light', "call SetBase2ToneColors('Base2Tone_MeadowDark', 0)")
+call g:quickmenu#append('Base2Tone Morning Dark', "call SetBase2ToneColors('Base2Tone_MorningDark', 1)")
+call g:quickmenu#append('Base2Tone Morning Light', "call SetBase2ToneColors('Base2Tone_MorningDark', 0)")
+call g:quickmenu#append('Base2Tone Pool Dark', "call SetBase2ToneColors('Base2Tone_PoolDark', 1)")
+call g:quickmenu#append('Base2Tone Pool Light', "call SetBase2ToneColors('Base2Tone_PoolDark', 0)")
+call g:quickmenu#append('Base2Tone Sea Dark', "call SetBase2ToneColors('Base2Tone_SeaDark', 1)")
+call g:quickmenu#append('Base2Tone Sea Light', "call SetBase2ToneColors('Base2Tone_SeaDark', 0)")
+call g:quickmenu#append('Base2Tone Space Dark', "call SetBase2ToneColors('Base2Tone_SpaceDark', 1)")
+call g:quickmenu#append('Base2Tone Space Light', "call SetBase2ToneColors('Base2Tone_SpaceDark', 0)")
+
+call g:quickmenu#append('Deus', "call SetColorScheme('deus', 1, 'deus')")
+call g:quickmenu#append('Dracula', "call SetColorScheme('dracula', 1, 'dracula')")
+
+call g:quickmenu#append('Grayscale Dark', "call SetColorScheme('base16-grayscale-dark', 1, 'base16_grayscale')")
+call g:quickmenu#append('Grayscale Light', "call SetColorScheme('base16-grayscale-light', 0, 'base16_grayscale')")
+
+call g:quickmenu#append('Gruvbox Dark', "call SetColorScheme('gruvbox', 1, 'gruvbox')")
+call g:quickmenu#append('Gruvbox Light', "call SetColorScheme('gruvbox', 0, 'gruvbox')")
+
+call g:quickmenu#append('Nord Vim', "call SetColorScheme('nord', 1, 'nord')")
+call g:quickmenu#append('Oceanic Next', "call SetColorScheme('OceanicNext', 1, 'oceanicnext')")
+call g:quickmenu#append('Pale Night', "call SetColorScheme('palenight', 1)")
+call g:quickmenu#append('Spacegray', "call SetColorScheme('spacegray', 1)")
+
+call g:quickmenu#append('Solarized Dark', "call SetColorScheme('solarized8', 1, 'solarized')")
+call g:quickmenu#append('Solarized Light', "call SetColorScheme('solarized8', 0, 'solarized')")
+call g:quickmenu#append('Solarized High Contrast Dark', "call SetColorScheme('solarized8_high', 1, 'solarized')")
+call g:quickmenu#append('Solarized High Contrast Light', "call SetColorScheme('solarized8_high', 0, 'solarized')")
+
+" NOTE: this assumes there are no other quickmenu's and so it uses id 0.
+" if you define other quickmenus, wrap the colorscheme stuff in a function
+" and use that here.
+nnoremap <leader>cs :call quickmenu#toggle(0)<cr>
 
 
 syntax on        " Turn on color highlighting

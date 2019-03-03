@@ -41,10 +41,20 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 " typescript
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+" Customizable menus (mostly used for color schemes)
+Plug 'skywind3000/quickmenu.vim'
 " Color Schemes
 Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'atelierbram/Base2Tone-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'ajh17/spacegray.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'ajmwagar/vim-deus'
 
 " Neovim Specific Plugins
 if has('nvim')
