@@ -8,6 +8,7 @@ source ~/dotfiles/.vimrc.general
 source ~/dotfiles/.vimrc.keymappings
 " Vim Plugin Configuration
 source ~/dotfiles/.vimrc.plugins
+" Vim Coc.nvim Configuration
+source ~/dotfiles/.vimrc.coc
 " Vim Colorscheme/Syntax Highlighting
 source ~/dotfiles/.vimrc.colors
-

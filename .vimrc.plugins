@@ -48,6 +48,8 @@ let g:ctrlp_custom_ignore = {
 map <C-b> :CtrlPBuffer<CR>
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth = 48
+" Use ctrlp-py-matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Vim Javasript
 " jsdoc syntax highlighting
@@ -64,23 +66,23 @@ augroup autoformat_settings
 augroup END<Paste>
 
 " Deoplete (Neovim)
-let g:deoplete#enable_at_startup=1
+" let g:deoplete#enable_at_startup=1
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ?"\<c-n>" :"\<tab>"
 
 " LanguageClient (Neovim)
 " Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {}
-" javascript/typescript language server
-if executable('javascript-typescript-stdio')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
-else
-  echo "javascript-typescript-stdio not installed!\n"
-endif
-"shortcuts
-nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <leader>gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+"let g:LanguageClient_autoStart = 1
+"let g:LanguageClient_serverCommands = {}
+"" javascript/typescript language server
+"if executable('javascript-typescript-stdio')
+"  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+"  let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
+"else
+"  echo"javascript-typescript-stdio not installed!\n"
+"endif
+""shortcuts
+"nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
+"nnoremap <silent> <leader>gd :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>

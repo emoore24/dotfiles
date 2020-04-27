@@ -1,5 +1,5 @@
 echo "PREREQUISITES: "
-echo "Make sure you have installed Neovim"
+echo "Make sure you have installed ZSH and Neovim"
 
 read -p "Press Enter to Continue, or Ctrl-C to exit" continuevar
 
@@ -14,6 +14,7 @@ echo "Symlinking files..."
 ln -sfv "$SCRIPT_DIR/.vimrc" ~ # vimrc
 ln -sfv "$SCRIPT_DIR/.tmux.conf" ~ # tmux.conf
 ln -sfv "$SCRIPT_DIR/.vimrc" ~/.config/nvim/init.vim # neovim
+ln -sfv "$SCRIPT_DIR/.zshrc" ~ # zsh
 # symlink vim bundle directory with neovim. vimrc takes care of detecting
 # the difference and doing the right thing.
 mkdir -pv ~/.vim
@@ -47,5 +48,7 @@ echo "Things to do:"
 echo "1. Restart shell & npm install neovim, typescript, javascript-typescript-langserver"
 echo "2. Install Homebrew"
 echo "3. Set up zsh using example zshrc in repo."
+echo "4. Set up git ssh key: https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh"
+
 
 cd -

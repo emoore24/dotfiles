@@ -11,38 +11,48 @@ endif
 call plug#begin('~/.vim/bundle') " use .vim/bundle as plugin directory
 
 " A better statusline
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Awesome Code Completion
-" Plug 'Valloric/YouCompleteMe'
 " nerdtree, load on demand when we invoke it
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-" Commenting Plug
+" Commenting Plugin
 Plug 'tpope/vim-commentary'
 " Emmet, load for html or css
 Plug 'mattn/emmet-vim', {'for': ['html', 'css']}
-" Show git diffs in gutter
-Plug 'airblade/vim-gitgutter'
+" Show git/hg diffs in gutter
+Plug 'mhinz/vim-signify'
 " Code snippet engine
 Plug 'SirVer/ultisnips'
 " Actual code snippets
 Plug 'honza/vim-snippets'
 " CtrlP is a fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
+" Makes CtrlP faster
+Plug 'FelikZ/ctrlp-py-matcher'
 " Auto set paste
 Plug 'ConradIrwin/vim-bracketed-paste'
+" Indent Guidelines
+Plug 'Yggdroot/indentLine'
 " Better javascript syntax highlighting support
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+" Typescript syntax highlighting
+Plug 'HerringtonDarkholme/yats.vim'
 " Asynchronous Syntax checking
 Plug 'w0rp/ale'
 " The following three plugins are used to enable Code Formatting
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+" Vim Vinegar. Press - to go up a directory
+Plug 'tpope/vim-vinegar'
 " typescript
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 " Customizable menus (mostly used for color schemes)
 Plug 'skywind3000/quickmenu.vim'
+" Auto insert closing parens, brackets, quotes, etc.
+Plug 'Raimondi/delimitMate'
+" CODE COMPLETION
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Color Schemes
 Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -59,12 +69,12 @@ Plug 'ajmwagar/vim-deus'
 " Neovim Specific Plugins
 if has('nvim')
   " Language Server Protocol Client
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "   \ 'branch': 'next',
+  "   \ 'do': 'bash install.sh',
+  "   \ }
   " Completion Engine
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 endif
 
 call plug#end()
